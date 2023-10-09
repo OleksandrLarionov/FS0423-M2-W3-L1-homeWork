@@ -12,34 +12,36 @@
 	</head>
 	<body>
 		<main>
-			<div
-				class="container d-flex justify-content-center align-items-center vh-100 w-100">
-				<form id="myForm" class="me-5">
-					<label for="exampleFormControlInput1" class="form-label ms-3 fw-bold"
-						>Pet</label
-					>
-					<input
-						type="text"
-						class="form-control m-3"
-						id="exampleFormControlInput1"
-						placeholder="Pet Name" />
-					<input
-						type="text"
-						class="form-control m-3"
-						id="exampleFormControlInput2"
-						placeholder="Owner Name" />
-					<input
-						type="text"
-						class="form-control m-3"
-						id="exampleFormControlInput3"
-						placeholder="Species" />
-					<input
-						type="text"
-						class="form-control m-3"
-						id="exampleFormControlInput4"
-						placeholder="Breed" />
-					<button type="submit" class="ms-3">Invia</button>
-				</form>
+			<div class="container d-flex justify-content-center align-items-center vh-100 w-100">
+				<div>
+					<form id="myForm" class="me-5">
+						<label for="exampleFormControlInput1" class="form-label ms-3 fw-bold">Pet</label>
+
+						<input
+							type="text"
+							class="form-control m-3"
+							id="exampleFormControlInput1"
+							placeholder="Pet Name" />
+						<input
+							type="text"
+							class="form-control m-3"
+							id="exampleFormControlInput2"
+							placeholder="Owner Name" />
+						<input
+							type="text"
+							class="form-control m-3"
+							id="exampleFormControlInput3"
+							placeholder="Species" />
+						<input
+							type="text"
+							class="form-control m-3"
+							id="exampleFormControlInput4"
+							placeholder="Breed" />
+						<button type="submit" class="ms-3">Invia</button>
+					</form>
+					<button onclick="reset()" class="m-3">Reset</button>
+				</div>
+				<div><ul id="list"></ul></div>
 			</div>
 		</main>
 

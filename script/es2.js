@@ -1,68 +1,54 @@
-const myForm = document.getElementById("myForm");
+const myForm = document.getElementById('myForm');
+const myUl = document.querySelector('#list');
+
+let petName = document.getElementById('exampleFormControlInput1');
+let ownerName = document.getElementById('exampleFormControlInput2');
+let species = document.getElementById('exampleFormControlInput3');
+let breed = document.getElementById('exampleFormControlInput4');
+
+let reset = () => {
+	petName.value = '';
+	ownerName.value = '';
+	species.value = '';
+	breed.value = '';
+};
+
 const pets = [];
-myForm.addEventListener("submit", function (e) {
+
+// LA MIA CLASSE
+class Data {
+	constructor(_petName, _ownerName, _species, _breed) {
+		this.petName = _petName;
+		this.ownerName = _ownerName;
+		this.species = _species;
+		this.breed = _breed;
+	}
+	checkOwner(otherPets) {
+		if (this.ownerName === otherPets.ownerName) {
+			return console.log(true);
+		} else {
+			return console.log(false);
+		}
+	}
+}
+
+// Evento
+myForm.addEventListener('submit', function (e) {
 	e.preventDefault();
 
-	const petNameValue = document.getElementById(
-		"exampleFormControlInput1"
-	).value;
-	const ownerNameValue = document.getElementById(
-		"exampleFormControlInput2"
-	).value;
-	const speciesValue = document.getElementById(
-		"exampleFormControlInput3"
-	).value;
-	const breedValue = document.getElementById("exampleFormControlInput4").value;
+	let newPet = new Data(petName.value, ownerName.value, species.value, breed.value);
+	pets.push(newPet);
 
-	// animalOwner(animal1, animal2) {
-	// 	if ((animal1.petName && animal2.petName) === this.ownerName) {
-	// 		console.log(true);
-	// 	}
-	// }
+	const myLi = document.createElement('li');
+	pets.forEach((pet, i) => {
+		const petName = pet.petName;
+		const ownerName = pet.ownerName;
+		const species = pet.species;
+		const breed = pet.breed;
+		myLi.innerHTML = `
+    ${petName} ${ownerName} ${species} ${breed}`;
+	});
+	myUl.appendChild(myLi);
 
-	const dataPet = {
-		petName: petNameValue,
-		ownerName: ownerNameValue,
-		species: speciesValue,
-		breed: breedValue,
-	};
-
-	pets.push(dataPet);
-
-	class Data {
-		constructor(_petName, _ownerName, _species, _breed) {
-			this.petName = _petName;
-			this.ownerName = _ownerName;
-			this.species = _species;
-			this.breed = _breed;
-		}
-		sameOwner(animal1, animal2) {
-			animal1 = pets[0].petName;
-			animal2 = pets[1].petName;
-			if ((animal1 && pets[0].ownerName) !== (animal2 && pets[1].ownerName)) {
-				console.log("Hanno due padroni differenti", false);
-			} else {
-				console.log("Hanno lo stesso padrone", true);
-			}
-		}
-	}
-
-	for (let i = 0; i < pets.length; i++) {
-		if (pets.length > 1) {
-			const pet1 = new Data(
-				pets[0].petName,
-				pets[0].ownerName,
-				pets[0].species,
-				pets[0].breed
-			);
-
-			const pet2 = new Data(
-				pets[1].petName,
-				pets[1].ownerName,
-				pets[1].species,
-				pets[1].breed
-			);
-			pet1.sameOwner(pet1, pet2);
-		}
-	}
+	// Creazione della lista
 });
