@@ -28,7 +28,6 @@ myForm.addEventListener("submit", function (e) {
 	};
 
 	pets.push(dataPet);
-	console.log(pets);
 
 	class Data {
 		constructor(_petName, _ownerName, _species, _breed) {
